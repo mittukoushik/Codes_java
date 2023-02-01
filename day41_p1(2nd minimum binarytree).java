@@ -57,21 +57,21 @@ class BinaryTreeNode{
 }
 */
 class Solution {
-    static Set<Integer> l=new HashSet<>();
+    static List<Integer> l=new ArrayList<>();
     static void inorder(BinaryTreeNode root){
         if(root!=null && root.data!=-1){
             inorder(root.left);
-            l.add(root.data);
+            if(!l.contains(root.data))
+                l.add(root.data);
             inorder(root.right);
         }
     }
     public int findSecondTopAgent(BinaryTreeNode root) {
        //implement your code here.
        inorder(root);
-    List<Integer> l1=new ArrayList<>(l);
-    Collections.sort(l1);
-      if(l1.size()>2){
-          return l1.get(1);
+        Collections.sort(l);
+      if(l.size()>2){
+          return l.get(1);
       }
        return -2;
     
