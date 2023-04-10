@@ -74,3 +74,37 @@ class j{
         System.out.println(ans);
     }
 }
+
+
+//using priority queue
+
+import java.util.*;
+
+class p4{
+    public static void main (String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int k = sc.nextInt();
+        int ar[] = new int[n];
+        for(int i=0;i<n;i++) ar[i] = sc.nextInt();
+        System.out.println(getAns(ar,k));
+    }
+    static int getAns(int ar[],int k){
+        PriorityQueue<Integer> pq = new PriorityQueue<>(Collections.reverseOrder());
+        for(int i : ar){
+            pq.add(i);
+        }
+        
+        while(k-- > 0){
+            int t = pq.poll();
+            int val = t%2==0?t/2 : t/2+1;
+            pq.add(val);
+        }
+        
+        int sum=0;
+        while(!pq.isEmpty()){
+            sum+=pq.poll();
+        }
+        return sum;
+    }
+}
