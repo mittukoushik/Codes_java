@@ -67,3 +67,33 @@ class j{
         System.out.println(res);
     }
 }
+
+
+import java.util.*;
+class j{
+    static void fun(String s,StringBuilder sb,int n,int k,List<Integer> res){
+        if(sb.length()==n){
+            res.add(Integer.parseInt(sb.toString()));
+            return;
+        }
+        for(int i=0;i<s.length();i++){
+            if(sb.length()==0 ||(sb.charAt(0)!='0' &&  Math.abs((sb.charAt(sb.length()-1)-'0')-(s.charAt(i)-'0'))==k)){
+                sb.append(s.charAt(i));
+                fun(s,sb,n,k,res);
+                sb.deleteCharAt(sb.length()-1);
+                
+            }
+                            
+        }
+    }
+    public static void main (String[] args) {
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+        int k=sc.nextInt();
+        String s="0123456789";
+        List<Integer> res=new ArrayList<>();
+        StringBuilder sb=new StringBuilder();
+        fun(s,sb,n,k,res);
+        System.out.println(res);
+    }
+}
