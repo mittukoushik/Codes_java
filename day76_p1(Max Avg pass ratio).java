@@ -98,3 +98,48 @@ class j{
         System.out.printf("%.5f",ans/n);
     }
 }
+
+
+import java.util.*;
+class j{
+    public static void main (String[] args) {
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+        int m=sc.nextInt();
+        int[][] ar=new int[n][2];
+        for(int i=0;i<n;i++){
+            ar[i][0]=sc.nextInt();
+            ar[i][1]=sc.nextInt();
+        }
+        PriorityQueue<int[]> pq=new PriorityQueue<>((a,b)->{
+            double a1=(double)(a[0])/(double)(a[1]);
+            double a2=(double)(a[0]+1)/(double)(a[1]+1);
+            double d1=a2-a1;
+            double b1=(double)(b[0])/(double)(b[1]);
+            double b2=(double)(b[0]+1)/(double)(b[1]+1);
+            double d2=b2-b1;
+            if(d1>d2){
+                return -1;
+            }
+            else{
+                return 1;
+            }
+        });
+        for(int[] i:ar){
+            pq.add(i);
+        }
+        while(m>0){
+            int[] arr=pq.poll();
+            arr[0]+=1;
+            arr[1]+=1;
+            pq.add(arr);
+            m--;
+        }
+        double ans=0;
+        while(!pq.isEmpty()){
+            int[] arr=pq.poll();
+            ans+=(double)arr[0]/(double)arr[1];
+        }
+        System.out.printf("%.5f",ans/n);
+    }
+}
