@@ -45,61 +45,35 @@
 // bappananaa
 
 import java.util.*;
-class a{
+class j{
     public static void main (String[] args) {
         Scanner sc=new Scanner(System.in);
-        String [] s=sc.nextLine().split(" ");
-        String a=s[0];
-        String b=s[1];
-        int i=0;
-        int j=0;
-        String k="";
-        while(i<a.length() && j<b.length()){
+        String[] s=sc.nextLine().split(" ");
+        String a=s[0],b=s[1];
+        int i=0,j=0,n=a.length(),m=b.length();
+        StringBuilder sb=new StringBuilder();
+        while(i<n && j<m){
             if(a.charAt(i)>b.charAt(j)){
-                k+=a.charAt(i);
-                i++;
+                sb.append(a.charAt(i++));
             }
-            else if (a.charAt(i)<b.charAt(j)){
-                k+=b.charAt(j);
-                j++;
+            else if(a.charAt(i)<b.charAt(j)){
+                sb.append(b.charAt(j++));
             }
-            else {
-                int m=check(a,b,i,j);
-                if(m==1){
-                    k+=a.charAt(i);
-                    i++;
+            else{
+                if(a.substring(i).compareTo(b.substring(j))>0){
+                    sb.append(a.charAt(i++));
                 }
                 else{
-                    k+=b.charAt(j);
-                    j++;
+                    sb.append(b.charAt(j++));
                 }
             }
         }
-        while(i<a.length()){
-            k+=a.charAt(i);
-            i++;
+        while(i<n){
+            sb.append(a.charAt(i++));
         }
-        while(j<b.length()){
-            k+=b.charAt(j);
-            j++;
+        while(j<m){
+            sb.append(b.charAt(j++));
         }
-        System.out.println(k);
-    }
-    static int check(String a,String b,int i,int j){
-        if(i>=a.length()){
-            return 0;
-        }
-        if(j>=b.length()){
-            return 1;
-        }
-        if(a.charAt(i)>b.charAt(j)){
-            return 1;
-        }
-        else if(a.charAt(i)<b.charAt(j)){
-            return 0;
-        }
-        else{
-            return check(a,b,i+1,j+1);
-        }
+        System.out.println(sb.toString());
     }
 }
