@@ -49,3 +49,19 @@ KEVIN   5000.00 40
 
 */
 select ename,sal,deptno from emp where deptno=40 and sal>(select max(sal) from emp where deptno!=40)
+
+
+
+/*
+Display the details of employees who are in sales dept and grade is 3.
+
+Sample Output:
+--------------
+empno   ename   job     mgr     hiredate        sal     comm    deptno                                                  
+7698    BLAKE   MANAGER 7839    1992-06-11      2850.00 NULL    30  
+
+*/
+select e.empno,e.ename,e.job,e.mgr,e.hiredate,e.sal,e.comm,e.deptno from emp e
+join salgrade sl
+on e.sal>=sl.losal and e.sal<=sl.hisal
+where grade=3 and deptno=30
