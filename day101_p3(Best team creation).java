@@ -72,37 +72,37 @@ import java.util.*;
 // 5 4 3 2
 // 3 5 5 6
 //   j i
-// class j{
-//     public static void main (String[] args) {
-//         Scanner sc=new Scanner(System.in);
-//         int n=sc.nextInt();
-//         int[] w=new int[n];
-//         int[] a=new int[n];
-//         for(int i=0;i<n;i++){
-//             w[i]=sc.nextInt();
-//         }
-//         for(int i=0;i<n;i++){
-//             a[i]=sc.nextInt();
-//         }
-//         int[][] arr=new int[n][2];
-//         for(int i=0;i<n;i++){
-//             arr[i]=new int[]{a[i],w[i]};
-//         }
-//         Arrays.sort(arr,(x,y)->x[0]==y[0]?y[1]-x[1]:y[0]-x[0]);//sort in desc order of ages
-//         int[] dp=new int[n];
+class j{
+    public static void main (String[] args) {
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+        int[] w=new int[n];
+        int[] a=new int[n];
+        for(int i=0;i<n;i++){
+            w[i]=sc.nextInt();
+        }
+        for(int i=0;i<n;i++){
+            a[i]=sc.nextInt();
+        }
+        int[][] arr=new int[n][2];
+        for(int i=0;i<n;i++){
+            arr[i]=new int[]{a[i],w[i]};
+        }
+        Arrays.sort(arr,(x,y)->x[0]==y[0]?y[1]-x[1]:y[0]-x[0]);//sort in desc order of ages
+        int[] dp=new int[n];
         
-//         for(int i=0;i<n;i++){
-//             dp[i]=arr[i][1];
-//             for(int j=0;j<i;j++){
-//                 if(arr[j][1]>=arr[i][1]){
-//                     dp[i]=Math.max(dp[i],dp[j]+arr[i][1]);
-//                 }
-//             }
-//         }
-//         int ans=0;
-//         for(int i:dp){
-//             ans=Math.max(i,ans);
-//         }
-//         System.out.println(ans);
-//     }
-// }
+        for(int i=0;i<n;i++){
+            dp[i]=arr[i][1];
+            for(int j=0;j<i;j++){
+                if(arr[j][1]>=arr[i][1]){
+                    dp[i]=Math.max(dp[i],dp[j]+arr[i][1]);
+                }
+            }
+        }
+        int ans=0;
+        for(int i:dp){
+            ans=Math.max(i,ans);
+        }
+        System.out.println(ans);
+    }
+}
