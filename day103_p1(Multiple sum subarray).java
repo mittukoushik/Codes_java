@@ -86,3 +86,18 @@ class j{
         System.out.println(false);
     }
 }
+
+Map<Integer,Integer> m=new HashMap<>();
+        int sum=0;
+        for(int i=0;i<n;i++){
+            sum+=a[i];
+            sum=sum%t;
+            if(m.containsKey(sum)){
+                if(i-m.get(sum)>1){
+                    System.out.println(true);
+                    System.exit(0);
+                }
+            }
+            m.put(sum,i);
+        }
+        System.out.println(false);
